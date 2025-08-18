@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EscaNamur</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <div class="stage">
+      <ul class="grid js-grid">
+        <!-- y = 0 -->
+        <li class="cell js-cell" data-x="0" data-y="0">
+          <img src="img/Gare.png" class="cell-bg" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <img class="particules" src="img/particule.png" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="1,1"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="1" data-y="0"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="2" data-y="0"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="3" data-y="0"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="4" data-y="0"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+
+        <!-- y = 1 -->
+        <li class="cell js-cell" data-x="0" data-y="1"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="1" data-y="1">
+          <img src="img/Beffroi.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="0,0"></button>
+            <button class="hotspot btn" data-to="2,2"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="2" data-y="1">
+          <img src="img/Group 41.png" class="cell-bg" alt="">
+        </li>
+        
+        <li class="cell js-cell" data-x="3" data-y="1"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="4" data-y="1"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+
+        <!-- y = 2 -->
+        <li class="cell js-cell" data-x="0" data-y="2">
+          <img src="img/Cathédrale.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="1,2"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="1" data-y="2">
+          <img src="img/Rue gauche.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="0,2"></button>
+            <button class="hotspot btn" data-to="2,2"></button>
+          </div>
+        </li>
+
+        <!-- >>> Cellule ACTIVE : (2,2) avec le joueur créé en HTML <<< -->
+        <li class="cell js-cell active" data-x="2" data-y="2">
+          <img src="img/Group 41.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="1,1"></button>
+            <button class="hotspot btn" data-to="1,2"></button>
+            <button class="hotspot btn" data-to="1,3"></button>
+            <button class="hotspot btn" data-to="3,2"></button>
+            <button class="hotspot btn" data-to="3,3"></button>
+
+            <!-- ===================== DIDACTICIEL (ajout) ===================== -->
+            <div class="tutorial-layer" id="tutorial-layer">
+              <!-- Overlay ancré à la cellule, contrôlé 100% clavier -->
+              <div id="overlay" class="tutorial-overlay">
+                <div class="overlay-content">
+                  <h1>Bienvenue sur EscaNamur&nbsp;!</h1>
+                  <p>Un site immersif dans la peau d’un innocent escargot…</p>
+                  <p class="press-hint">Appuie sur <strong>Entrée</strong> pour commencer</p>
+                </div>
+              </div>
+
+              <!-- Bulle 1 : flèches gauche/droite -->
+              <div id="bubble1" class="tutorial-bubble hidden">
+                <img src="img jeux/guide moins touriste.png" alt="" class="bubble-char"/>
+                <p>Pour jouer, utilise les flèches <strong>gauche</strong> et <strong>droite</strong>.</p>
+              </div>
+
+              <!-- Bulle 3 : fragments de clé -->
+              <div id="bubble3" class="tutorial-bubble hidden">
+                <img src="img jeux/guide moins touriste.png" alt="" class="bubble-char"/>
+                <div>
+                  <p>Parcourez Namur pour trouver les fragments de clé.</p>
+                  <div class="press-hint">Appuie sur <strong>Entrée</strong> pour continuer</div>
+                </div>
+              </div>
+
+              <!-- Bulle 2 : objectif final -->
+              <div id="bubble2" class="tutorial-bubble hidden">
+                <img src="img jeux/guide moins touriste.png" alt="" class="bubble-char"/>
+                <div>
+                  <p>Votre but : utiliser la clé pour libérer votre ami enfermé&nbsp;!</p>
+                  <div class="press-hint">Appuie sur <strong>Entrée</strong> pour fermer</div>
+                </div>
+              </div>
+            </div>
+            <!-- =============================================================== -->
+          </div>
+
+          <!-- PERSONNAGE (créé en HTML) -->
+          <img id="player" class="player" src="img/escargot (1).png" alt="Personnage">
+
+          
+        </li>
+
+        <li class="cell js-cell" data-x="3" data-y="2">
+          <img src="img/Mur droit.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="2,2"></button>
+            <button class="hotspot btn" data-to="4,2"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="4" data-y="2">
+          <img src="img/Théatre.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="3,2"></button>
+            <button class="hotspot btn" data-to="3,3"></button>
+          </div>
+        </li>
+
+        <!-- y = 3 -->
+        <li class="cell js-cell" data-x="0" data-y="3"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="1" data-y="3">
+          <img src="img/Citadelle.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="2,2"></button>
+            <button class="hotspot btn" data-to="2,4"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="2" data-y="3"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="3" data-y="3">
+          <img src="img/Group 50.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="2,2"></button>
+            <button class="hotspot btn" data-to="4,2"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="4" data-y="3"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+
+        <!-- y = 4 -->
+        <li class="cell js-cell" data-x="0" data-y="4"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+        <li class="cell js-cell" data-x="1" data-y="4"><img src="img/Group 41.png" class="cell-bg" alt=""></li>
+        <li class="cell js-cell" data-x="2" data-y="4">
+          <img src="img/Mur bas.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="1,3"></button>
+            <button class="hotspot btn" data-to="3,4"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="3" data-y="4">
+          <img src="img/Pavillon.png" class="cell-bg" alt="">
+          <div class="hotspots">
+            <button class="hotspot btn" data-to="2,4"></button>
+          </div>
+        </li>
+        <li class="cell js-cell" data-x="4" data-y="4"><img src="img/Nuage.png" class="cell-bg Nuage" alt=""></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
