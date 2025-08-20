@@ -592,7 +592,7 @@ function activateKb02Selected(){
   kb02ComboPos = 0;
 
  
-  const newReveal = Math.min(Math.floor(kb02Errors / 3), KB02_COMBO.length);
+  const newReveal = Math.min(Math.floor(kb02Errors / 2), KB02_COMBO.length);
   if (newReveal > kb02HintReveal){
     kb02HintReveal = newReveal;
     const newLabel = KB02_COMBO[newReveal - 1];
